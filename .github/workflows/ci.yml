@@ -109,8 +109,8 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository_owner }}/petclinic-${{ matrix.service.name }}
           tags: |
-          type=sha,prefix=,format=short
-          type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,prefix=,format=short
+            type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -124,5 +124,5 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-          ARTIFACT_NAME=${{ matrix.service.artifact }}
-          EXPOSED_PORT=${{ matrix.service.port }}
+            ARTIFACT_NAME=${{ matrix.service.artifact }}
+            EXPOSED_PORT=${{ matrix.service.port }}
